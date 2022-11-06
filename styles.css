@@ -1,0 +1,50 @@
+h1 {
+  font-size: 56px;
+  margin: 10px auto;
+  text-align: left;
+}
+
+h2 {
+  font-size: 56px;
+  margin-bottom: 15px;
+}
+
+form {
+  margin: 15px auto;
+}
+
+.temp-change {
+  width: 100px;
+  margin-left: -43px;
+  margin-top: 10px;
+}
+
+.current-time {
+  position: relative;
+  margin-top: 24px;
+  text-align: right;
+}
+
+p.weather-indicators {
+  margin-top: 10px;
+}
+
+.cities {
+  font-size: 13px;
+}
+
+.card-title {
+  font-size: 18px;
+}
+
+.card-text {
+  font-size: 36px;
+}
+
+.temp {
+  font-size: 14px;
+}
+
+.forecast-card {
+  margin-bottom: 15px !important;
+}

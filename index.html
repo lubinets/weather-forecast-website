@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="src/styles.css" rel="stylesheet">
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="col-7">
+            <div class="card shadow p-3 mb-5 bg-body rounded">
+                <div class="card-body">
+                    <div class="row cities">
+                        <div class="col-sm-1">Kyiv</div>
+                        <div class="col-sm-1">Lviv</div>
+                        <div class="col-2">Zaporizhzhya</div>
+                        <div class="col-2">Dnipro</div>
+                    </div>
+                <form class="form-label main-input-form">
+										<div class="row">
+											<div class="col-8">
+												<input type="text" class="form-control city-input" placeholder="type your city">
+											</div>
+											<div class="col">
+												<button type="submit" class="btn btn-primary">Search</button>
+                                            </div>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-success current">Current</button>
+                                            </div>
+										</div>
+                </form>
+                    <div class="row">
+                        <div class="col main-city"> <h1>Paris</h1></div>       
+                        <p class="col-5 current-time">Tuesday, 27th of September</p>
+                    </div>
+                    <div class="row">
+												<h2 class="col-4">🌥 <span class="current-temp">18</span></h2>
+												<div class="temp-change"> <a href="#" class="celcius">°C</a> |
+												<a href="#" class="fahrenheit">°F</a></div>
+                        <p class="col-3 weather-indicators">Humidity: 35% <br> Wind: 2m/c</p>
+                    </div>
+                   
+                    <div class="row">
+                        <div class="col">
+                            <div class="card forecast-card text-center shadow p-3 mb-5 bg-body rounded">
+                                <h5 class="card-title">Sun</h5>
+                                <p class="card-text">🌤 <br>
+                                <div class="temp">17° / 8°</div>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card forecast-card text-center shadow p-3 mb-5 bg-body rounded">
+                                <h5 class="card-title">Mon</h5>
+                                <p class="card-text">☀ <br>
+                                <div class="temp">20° / 11°</div>
+                                </p>    
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card forecast-card text-center shadow p-3 mb-5 bg-body rounded">
+                                <h5 class="card-title">Tue</h5>
+                                <p class="card-text">🌦 <br>
+                                <div class="temp">16° / 9°</div>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card forecast-card text-center shadow p-3 mb-5 bg-body rounded">
+                                <h5 class="card-title">Wed</h5>
+                                <p class="card-text">🌧 <br> 
+                                <div class="temp">15° / 8°</div>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card forecast-card text-center shadow p-3 mb-5 bg-body rounded">
+                                <h5 class="card-title">Thu</h5>
+                                <p class="card-text">🌩 <br> 
+                                <div class="temp">14° / 6°</div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
