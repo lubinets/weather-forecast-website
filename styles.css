@@ -13,6 +13,10 @@ form {
   margin: 15px auto;
 }
 
+.container {
+  margin-top: 10px;
+}
+
 .temp-change {
   width: 100px;
   margin-left: -43px;
@@ -47,8 +51,4 @@ p.weather-indicators {
 
 .forecast-card {
   margin-bottom: 15px !important;
-}
-
-.repository-link {
-  margin-top: 10px;
 }
