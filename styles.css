@@ -48,3 +48,7 @@ p.weather-indicators {
 .forecast-card {
   margin-bottom: 15px !important;
 }
+
+.repository-link {
+  margin-top: 10px;
+}
