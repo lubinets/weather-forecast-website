@@ -50,5 +50,9 @@ p.weather-indicators {
 }
 
 .forecast-card {
+  margin-bottom: 10px !important;
+}
+
+.card {
   margin-bottom: 15px !important;
 }
