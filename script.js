@@ -68,7 +68,7 @@ if (
 }
 
 let currentTime = document.querySelector(".current-time");
-currentTime.innerHTML = `${day} ${hours}:${addZero(
+currentTime.innerHTML = `Last updated: ${day} ${hours}:${addZero(
   minutes
 )}, </br> ${now.getDate()}${numberEnding} of ${month}`;
 
