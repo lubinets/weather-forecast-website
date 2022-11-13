@@ -137,6 +137,9 @@ function changeTemperature(response) {
   weatherDescription.innerHTML = capitalizeFirstLetter(
     `${response.data.weather[0].description}`
   );
+
+  let humidity = document.querySelector("#humidity");
+  humidity.innerHTML = response.data.main.humidity;
 }
 
 function showPosition(position) {
