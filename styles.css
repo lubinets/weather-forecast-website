@@ -1,3 +1,9 @@
+/*
+Design idea: Make light theme for day and dark theme for night
+Center the container
+Add a background behind container
+*/
+
 h1 {
   font-size: 56px;
   margin: 10px auto;
@@ -29,8 +35,10 @@ form {
   text-align: right;
 }
 
-p.weather-indicators {
-  margin-top: 10px;
+ul.weather-indicators {
+  margin-top: 5px 0px;
+  font-size: 14px;
+  list-style: none;
 }
 
 .cities {
