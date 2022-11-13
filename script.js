@@ -140,6 +140,9 @@ function changeTemperature(response) {
 
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = response.data.main.humidity;
+
+  let windSpeed = document.querySelector("#wind-speed");
+  windSpeed.innerHTML = Math.round(response.data.wind.speed);
 }
 
 function showPosition(position) {
