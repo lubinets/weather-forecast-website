@@ -119,6 +119,9 @@ function getLocation(event) {
 /*
 Add a Current Location button. 
 When clicking on it, it uses the Geolocation API to get your GPS coordinates and display and the city and current temperature using the OpenWeather API. */
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 function changeTemperature(response) {
   console.log(response);
@@ -129,6 +132,11 @@ function changeTemperature(response) {
 
   let city = document.querySelector("h1");
   city.innerHTML = response.data.name;
+
+  let weatherDescription = document.querySelector("#weather-description");
+  weatherDescription.innerHTML = capitalizeFirstLetter(
+    `${response.data.weather[0].description}`
+  );
 }
 
 function showPosition(position) {
