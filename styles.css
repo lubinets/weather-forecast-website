@@ -19,13 +19,23 @@ form {
   margin: 15px auto;
 }
 
+img {
+  height: 100px;
+  width: auto;
+}
+
 .container {
   margin-top: 10px;
 }
 
+.current-temp {
+  position: relative;
+  left: -20px;
+}
+
 .temp-change {
   width: 100px;
-  margin-left: -43px;
+  margin-left: -50px;
   margin-top: 10px;
 }
 
@@ -38,7 +48,7 @@ form {
 }
 
 ul.weather-indicators {
-  margin-top: 5px 0px;
+  margin-top: 7px;
   font-size: 14px;
   list-style: none;
 }
