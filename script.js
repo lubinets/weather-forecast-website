@@ -1,14 +1,5 @@
-/* 
-⏰Feature #1
-Display the current date and time using JavaScript.
+// Displays the current date and time
 
-🕵️‍♀️Feature #2
-Search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
-
-🙀Bonus Feature
-Display a fake temperature (i.e 17) in Celsius and add a link to convert it to Fahrenheit. When clicking on it, it should convert the temperature to Fahrenheit. When clicking on Celsius, it should convert it back to Celsius. */
-
-// Feature 1
 let now = new Date();
 let day = now.getDay();
 let month = now.getMonth();
@@ -72,25 +63,22 @@ currentTime.innerHTML = `Last updated: ${day} ${hours}:${addZero(
   minutes
 )}, </br> ${now.getDate()}${numberEnding} of ${month}`;
 
-// Feature 2
-let city = document.querySelector("h1");
-
-function changeCity(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector(".city-input");
-  city.innerHTML = `${cityInput.value}`;
-}
+// Search engine
 
 let cityForm = document.querySelector(".main-input-form");
-cityForm.addEventListener("submit", changeCity && getLocation);
+cityForm.addEventListener("submit", handleSubmit);
 
-function getLocation(event) {
-  event.preventDefault();
+function search(city) {
   let apiKey = "203fa770242fcd2b9555d832a88ea567";
-  let cityInput = document.querySelector(".city-input");
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(changeTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector(".city-input");
+  search(cityInput.value);
 }
 
 // Current Location button - Uses the Geolocation API to get your GPS coordinates and display and the city and current temperature using the OpenWeather API.
@@ -101,25 +89,20 @@ function capitalizeFirstLetter(string) {
 
 function changeTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
-
   let mainTemp = document.querySelector(".current-temp");
-  mainTemp.innerHTML = temperature;
-
   let city = document.querySelector("h1");
-  city.innerHTML = response.data.name;
-
   let weatherDescription = document.querySelector("#weather-description");
+  let humidity = document.querySelector("#humidity");
+  let windSpeed = document.querySelector("#wind-speed");
+  let weatherIcon = document.querySelector("#icon");
+
+  mainTemp.innerHTML = temperature;
+  city.innerHTML = response.data.name;
   weatherDescription.innerHTML = capitalizeFirstLetter(
     `${response.data.weather[0].description}`
   );
-
-  let humidity = document.querySelector("#humidity");
   humidity.innerHTML = response.data.main.humidity;
-
-  let windSpeed = document.querySelector("#wind-speed");
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
-
-  let weatherIcon = document.querySelector("#icon");
   weatherIcon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -174,3 +157,5 @@ let celciusLink = document.querySelector("#celcius-link");
 
 fahrenheitLink.addEventListener("click", changeToFahrenheit);
 celciusLink.addEventListener("click", changeToCelcius);
+
+search("London");
