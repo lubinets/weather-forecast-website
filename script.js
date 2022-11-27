@@ -84,29 +84,6 @@ function changeCity(event) {
 let cityForm = document.querySelector(".main-input-form");
 cityForm.addEventListener("submit", changeCity && getLocation);
 
-// Feature 3 - Temperature conversion
-/* let currentTemp = document.querySelector(".current-temp");
-
-function changeToCelcius(event) {
-  event.preventDefault();
-  currentTemp.innerHTML = 18;
-}
-
-function changeToFahrenheit(event) {
-  event.preventDefault();
-  currentTemp.innerHTML = Math.round((18 * 9) / 5 + 32);
-}
-
-let celcius = document.querySelector(".celcius");
-let fahrenheit = document.querySelector(".fahrenheit");
-
-celcius.addEventListener("click", changeToCelcius);
-fahrenheit.addEventListener("click", changeToFahrenheit);*/
-
-/* 
-In your project, when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city.
-Please note: there's no need to include a temperature conversion at the moment. This will be taught later on in the course. */
-
 function getLocation(event) {
   event.preventDefault();
   let apiKey = "203fa770242fcd2b9555d832a88ea567";
@@ -116,15 +93,13 @@ function getLocation(event) {
   axios.get(apiUrl).then(changeTemperature);
 }
 
-/*
-Add a Current Location button. 
-When clicking on it, it uses the Geolocation API to get your GPS coordinates and display and the city and current temperature using the OpenWeather API. */
+// Current Location button - Uses the Geolocation API to get your GPS coordinates and display and the city and current temperature using the OpenWeather API.
+
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function changeTemperature(response) {
-  console.log(response);
   let temperature = Math.round(response.data.main.temp);
 
   let mainTemp = document.querySelector(".current-temp");
@@ -150,6 +125,8 @@ function changeTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].description);
+
+  celsiusTemp = response.data.main.temp;
 }
 
 function showPosition(position) {
@@ -168,3 +145,32 @@ function changeToCurrent(event) {
 
 let currentButton = document.querySelector("button.current");
 currentButton.addEventListener("click", changeToCurrent);
+
+// Temperature conversion
+
+let celsiusTemp = null;
+
+function changeToFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  let currentTemp = document.querySelector(".current-temp");
+  currentTemp.innerHTML = Math.round(fahrenheitTemp);
+  // remove active class to the celcius link
+  celciusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+}
+
+function changeToCelcius(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector(".current-temp");
+  currentTemp.innerHTML = Math.round(celsiusTemp);
+  // remove active class to the fahrenheit link
+  fahrenheitLink.classList.remove("active");
+  celciusLink.classList.add("active");
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+let celciusLink = document.querySelector("#celcius-link");
+
+fahrenheitLink.addEventListener("click", changeToFahrenheit);
+celciusLink.addEventListener("click", changeToCelcius);

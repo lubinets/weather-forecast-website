@@ -24,19 +24,34 @@ img {
   width: auto;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .container {
   margin-top: 10px;
 }
 
 .current-temp {
   position: relative;
-  left: -20px;
+  padding: 0px;
+  width: 80px;
 }
 
 .temp-change {
   width: 100px;
-  margin-left: -50px;
+  margin-left: -15px;
   margin-top: 10px;
+}
+
+.temp-change .active {
+  color: #111111;
+  text-decoration: none;
+  cursor: default;
 }
 
 .current-time {
