@@ -81,7 +81,7 @@ function handleSubmit(event) {
   search(cityInput.value);
 }
 
-// Current Location button - Uses the Geolocation API to get your GPS coordinates and display and the city and current temperature using the OpenWeather API.
+// Current Location button - Gets users GPS coordinates and displays and the city and current temperature using the OpenWeather API
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -138,7 +138,7 @@ function changeToFahrenheit(event) {
   let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
   let currentTemp = document.querySelector(".current-temp");
   currentTemp.innerHTML = Math.round(fahrenheitTemp);
-  // remove active class to the celcius link
+  // remove active class from the celcius link
   celciusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
 }
@@ -147,7 +147,7 @@ function changeToCelcius(event) {
   event.preventDefault();
   let currentTemp = document.querySelector(".current-temp");
   currentTemp.innerHTML = Math.round(celsiusTemp);
-  // remove active class to the fahrenheit link
+  // remove active class from the fahrenheit link
   fahrenheitLink.classList.remove("active");
   celciusLink.classList.add("active");
 }
