@@ -72,6 +72,14 @@ ul.weather-indicators {
   font-size: 13px;
 }
 
+.cities a {
+  color: #111111;
+}
+
+.cities a:hover {
+  cursor: pointer;
+}
+
 .card-title {
   font-size: 18px;
 }

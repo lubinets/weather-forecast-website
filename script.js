@@ -158,4 +158,24 @@ let celciusLink = document.querySelector("#celcius-link");
 fahrenheitLink.addEventListener("click", changeToFahrenheit);
 celciusLink.addEventListener("click", changeToCelcius);
 
+let weatherInKyiv = document.querySelector("#kyiv-link");
+let weatherInLviv = document.querySelector("#lviv-link");
+let weatherInZaporizhzhia = document.querySelector("#zaporizhzhia-link");
+let weatherInDnipro = document.querySelector("#dnipro-link");
+
+weatherInKyiv.addEventListener("click", () => {
+  search("Kyiv");
+});
+
+weatherInLviv.addEventListener("click", () => {
+  search("Lviv");
+});
+
+weatherInZaporizhzhia.addEventListener("click", () => {
+  search((city = "Zaporizhzhia"));
+});
+weatherInDnipro.addEventListener("click", () => {
+  search((city = "Dnipro"));
+});
+
 search("London");
