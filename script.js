@@ -69,7 +69,7 @@ let cityForm = document.querySelector(".main-input-form");
 cityForm.addEventListener("submit", handleSubmit);
 
 function search(city) {
-  let apiKey = "203fa770242fcd2b9555d832a88ea567";
+  let apiKey = "502dc8f7ae36e57af1974e18d16a86f8";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(changeTemperature);
@@ -96,6 +96,8 @@ function changeTemperature(response) {
   let windSpeed = document.querySelector("#wind-speed");
   let weatherIcon = document.querySelector("#icon");
 
+  displayForecast();
+
   mainTemp.innerHTML = temperature;
   city.innerHTML = response.data.name;
   weatherDescription.innerHTML = capitalizeFirstLetter(
@@ -110,6 +112,7 @@ function changeTemperature(response) {
   weatherIcon.setAttribute("alt", response.data.weather[0].description);
 
   celsiusTemp = response.data.main.temp;
+  changeToCelcius();
 }
 
 function showPosition(position) {
@@ -158,6 +161,8 @@ let celciusLink = document.querySelector("#celcius-link");
 fahrenheitLink.addEventListener("click", changeToFahrenheit);
 celciusLink.addEventListener("click", changeToCelcius);
 
+// Top cities links
+
 let weatherInKyiv = document.querySelector("#kyiv-link");
 let weatherInLviv = document.querySelector("#lviv-link");
 let weatherInZaporizhzhia = document.querySelector("#zaporizhzhia-link");
@@ -177,5 +182,34 @@ weatherInZaporizhzhia.addEventListener("click", () => {
 weatherInDnipro.addEventListener("click", () => {
   search((city = "Dnipro"));
 });
+
+// Display forecast cards
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col">
+              <div class="card forecast-card text-center shadow p-3 mb-5 bg-body rounded">
+                  <h5 class="card-title weather-forecast-date">${day}</h5>
+                  <p class="card-text">🌤 <br>
+                  <div class="weather-forecast-temp">
+                      <span class="weather-forecast-temp-max">17° / </span>
+                      <span class="weather-forecast-temp-min">8°</span>
+                  </div>
+                  </p>
+              </div>
+          </div>
+      `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
 search("London");

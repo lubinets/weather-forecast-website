@@ -99,3 +99,7 @@ ul.weather-indicators {
 .card {
   margin-bottom: 15px !important;
 }
+
+.repository-link {
+  margin-left: 130px;
+}
