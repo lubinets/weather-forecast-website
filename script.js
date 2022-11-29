@@ -112,7 +112,8 @@ function changeTemperature(response) {
   weatherIcon.setAttribute("alt", response.data.weather[0].description);
 
   celsiusTemp = response.data.main.temp;
-  changeToCelcius();
+  fahrenheitLink.classList.remove("active");
+  celciusLink.classList.add("active");
 }
 
 function showPosition(position) {
