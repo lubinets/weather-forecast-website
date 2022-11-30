@@ -81,10 +81,18 @@ function handleSubmit(event) {
   search(cityInput.value);
 }
 
-// Current Location button - Gets users GPS coordinates and displays and the city and current temperature using the OpenWeather API
-
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+// Weather and forecast API data
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "502dc8f7ae36e57af1974e18d16a86f8";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function changeTemperature(response) {
@@ -95,8 +103,6 @@ function changeTemperature(response) {
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind-speed");
   let weatherIcon = document.querySelector("#icon");
-
-  displayForecast();
 
   mainTemp.innerHTML = temperature;
   city.innerHTML = response.data.name;
@@ -114,7 +120,11 @@ function changeTemperature(response) {
   celsiusTemp = response.data.main.temp;
   fahrenheitLink.classList.remove("active");
   celciusLink.classList.add("active");
+
+  getForecast(response.data.coord);
 }
+
+// Current Location button - Gets users GPS coordinates and displays and the city and current temperature using the OpenWeather API
 
 function showPosition(position) {
   let latitude = position.coords.latitude;
@@ -186,7 +196,8 @@ weatherInDnipro.addEventListener("click", () => {
 
 // Display forecast cards
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
