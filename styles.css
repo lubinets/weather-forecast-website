@@ -27,7 +27,8 @@ a:hover {
 }
 
 .container {
-  margin-top: 10px;
+  margin: 15px auto auto 120px;
+  max-width: 650px;
 }
 
 .current-temp {
@@ -54,8 +55,8 @@ a:hover {
 }
 
 ul.weather-indicators {
-  margin-top: 17px;
-  font-size: 14px;
+  margin-top: 13px;
+  font-size: 13px;
   list-style: none;
 }
 
@@ -72,7 +73,7 @@ ul.weather-indicators {
 }
 
 .card-title {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .card-text {
@@ -101,4 +102,14 @@ ul.weather-indicators {
   position: relative;
   top: -10px;
   left: -10px;
+}
+
+.weather-forecast-temp-max {
+  font-weight: 500;
+  margin: 0px 2px;
+}
+
+.weather-forecast-temp-min {
+  color: #888888;
+  margin: 0px 2px;
 }
