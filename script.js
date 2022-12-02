@@ -116,8 +116,6 @@ function changeTemperature(response) {
   weatherIcon.setAttribute("alt", response.data.weather[0].description);
 
   celsiusTemp = response.data.main.temp;
-  fahrenheitLink.classList.remove("active");
-  celciusLink.classList.add("active");
 
   getForecast(response.data.coord);
 }
@@ -188,35 +186,6 @@ function changeToCurrent(event) {
 
 let currentButton = document.querySelector("button.current");
 currentButton.addEventListener("click", changeToCurrent);
-
-// Temperature conversion
-
-let celsiusTemp = null;
-
-function changeToFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-  let currentTemp = document.querySelector(".current-temp");
-  currentTemp.innerHTML = Math.round(fahrenheitTemp);
-  // remove active class from the celcius link
-  celciusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-}
-
-function changeToCelcius(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector(".current-temp");
-  currentTemp.innerHTML = Math.round(celsiusTemp);
-  // remove active class from the fahrenheit link
-  fahrenheitLink.classList.remove("active");
-  celciusLink.classList.add("active");
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-let celciusLink = document.querySelector("#celcius-link");
-
-fahrenheitLink.addEventListener("click", changeToFahrenheit);
-celciusLink.addEventListener("click", changeToCelcius);
 
 // Top cities links
 

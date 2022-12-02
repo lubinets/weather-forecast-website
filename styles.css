@@ -10,11 +10,6 @@ h1 {
   text-align: left;
 }
 
-h2 {
-  font-size: 56px;
-  margin-bottom: 15px;
-}
-
 form {
   margin: 15px auto;
 }
@@ -38,19 +33,16 @@ a:hover {
 .current-temp {
   position: relative;
   padding: 0px;
-  width: 80px;
+  font-size: 56px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  margin-right: 10px;
 }
 
-.temp-change {
-  width: 100px;
-  margin-left: -15px;
-  margin-top: 10px;
-}
-
-.temp-change .active {
-  color: #111111;
-  text-decoration: none;
-  cursor: default;
+.units {
+  position: relative;
+  width: 50px;
+  top: -29px;
 }
 
 .current-time {
@@ -62,7 +54,7 @@ a:hover {
 }
 
 ul.weather-indicators {
-  margin-top: 7px;
+  margin-top: 17px;
   font-size: 14px;
   list-style: none;
 }
@@ -101,4 +93,12 @@ ul.weather-indicators {
 
 .repository-link {
   margin-left: 130px;
+}
+
+#icon {
+  width: 100px;
+  height: auto;
+  position: relative;
+  top: -10px;
+  left: -10px;
 }
