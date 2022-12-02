@@ -88,10 +88,8 @@ function capitalizeFirstLetter(string) {
 // Weather and forecast API data
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "502dc8f7ae36e57af1974e18d16a86f8";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -122,6 +120,54 @@ function changeTemperature(response) {
   celciusLink.classList.add("active");
 
   getForecast(response.data.coord);
+}
+// Timestamp on the forecast cards
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+// Display forecast cards
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row row-cols-5">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
+          <div class="col">
+              <div class="card forecast-card text-center shadow p-3 mb-5 bg-body rounded">
+                  <h5 class="card-title weather-forecast-date">${formatDay(
+                    forecastDay.dt
+                  )}</h5>
+                  <img src="http://openweathermap.org/img/wn/${
+                    forecastDay.weather[0].icon
+                  }@2x.png" />
+                  <div class="weather-forecast-temp">
+                      <span class="weather-forecast-temp-max">${Math.round(
+                        forecastDay.temp.max
+                      )}° / </span>
+                      <span class="weather-forecast-temp-min">${Math.round(
+                        forecastDay.temp.min
+                      )}°</span>
+                  </div>
+                  </p>
+              </div>
+          </div>
+      `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 // Current Location button - Gets users GPS coordinates and displays and the city and current temperature using the OpenWeather API
@@ -193,35 +239,5 @@ weatherInZaporizhzhia.addEventListener("click", () => {
 weatherInDnipro.addEventListener("click", () => {
   search((city = "Dnipro"));
 });
-
-// Display forecast cards
-
-function displayForecast(response) {
-  console.log(response.data.daily);
-  let forecastElement = document.querySelector("#forecast");
-
-  let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-          <div class="col">
-              <div class="card forecast-card text-center shadow p-3 mb-5 bg-body rounded">
-                  <h5 class="card-title weather-forecast-date">${day}</h5>
-                  <p class="card-text">🌤 <br>
-                  <div class="weather-forecast-temp">
-                      <span class="weather-forecast-temp-max">17° / </span>
-                      <span class="weather-forecast-temp-min">8°</span>
-                  </div>
-                  </p>
-              </div>
-          </div>
-      `;
-  });
-
-  forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
-}
 
 search("London");
